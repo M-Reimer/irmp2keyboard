@@ -30,6 +30,13 @@
 //
 // Have a look at "config.h" and "config_keybindings.h" for more info!
 //
+// Wiring: Infrared input (TSOP)
+//           Pin 8 (D8) on Arduino Pro Micro (or Leonardo)
+//           Pin 12 (D12) on Arduino Nano (or Uno)
+//         PS2 Output (if configured for PS2 in config.h)
+//           Pin 2 (D2) Keyboard data
+//           Pin 3 (D3) Keyboard clock
+//
 
 
 #include <TimerOne.h>
