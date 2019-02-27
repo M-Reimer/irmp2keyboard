@@ -1,0 +1,66 @@
+// Configuration template to control Kodi
+// Place into your "config_keybindings.h" and fill the remote control
+// codes into the "empty curly brackets"
+// Comment out the lines where you don't want to add codes!
+
+KeyTable REMOTE_KEYS[] = {
+  // Number keys
+  {{}, 0x00, KEY_0},
+  {{}, 0x00, KEY_1},
+  {{}, 0x00, KEY_2},
+  {{}, 0x00, KEY_3},
+  {{}, 0x00, KEY_4},
+  {{}, 0x00, KEY_5},
+  {{}, 0x00, KEY_6},
+  {{}, 0x00, KEY_7},
+  {{}, 0x00, KEY_8},
+  {{}, 0x00, KEY_9},
+
+  // Arrow keys
+  {{}, MOD_NONE, KEY_LEFT},
+  {{}, MOD_NONE, KEY_RIGHT},
+  {{}, MOD_NONE, KEY_UP},
+  {{}, MOD_NONE, KEY_DOWN},
+  // OK-Button
+  {{}, MOD_NONE, KEY_ENTER},
+  // Back or Exit
+  {{}, MOD_NONE, KEY_BACKSPACE},
+  // Info-Key
+  {{}, MOD_NONE, KEY_I},
+  // Menu
+  {{}, MOD_NONE, KEY_M},
+  // Context menu
+  {{}, MOD_NONE, KEY_C},
+  // EPG guide
+  {{}, MOD_NONE, KEY_E},
+
+  // Play
+  {{}, MOD_NONE, KEY_P},
+  // Pause
+  {{}, MOD_NONE, KEY_SPACE},
+  // Stop
+  {{}, MOD_NONE, KEY_X},
+  // Fast forward
+  {{}, MOD_NONE, KEY_F},
+  // Rewind
+  {{}, MOD_NONE, KEY_R},
+
+  // Volume up
+  {{}, MOD_NONE, KEYPAD_ADD},
+  // Volume down
+  {{}, MOD_NONE, KEYPAD_SUBTRACT},
+  // Mute
+  {{}, MOD_NONE, KEY_F8},
+
+  // Red
+  {{}, MOD_NONE, KEY_F1},
+  // Green
+  {{}, MOD_NONE, KEY_F2},
+  // Yellow
+  {{}, MOD_NONE, KEY_F3},
+  // Blue
+  {{}, MOD_NONE, KEY_F4},
+
+  // Shutdown menu
+  {{}, MOD_NONE, KEY_POWER},
+};
