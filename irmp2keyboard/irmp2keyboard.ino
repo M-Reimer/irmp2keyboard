@@ -67,7 +67,7 @@ struct KeyTable {
 #define MOD_CTRL 0x01
 #define MOD_SHIFT 0x02
 #define MOD_ALT 0x04
-#define MOD_META 0x08
+#define MOD_ALTGR 0x08
 
 #include "config_keybindings.h"
 
@@ -112,6 +112,16 @@ void loop() {
           if (memcmp(&data, &REMOTE_KEYS[index], sizeof(IRMP_DATA) - 1) == 0) {
             //Serial.println("Pressing");
             Keyboard.releaseAll();
+
+            if (REMOTE_KEYS[index].modifiers & MOD_CTRL)
+              Keyboard.press(KEY_LEFT_CTRL);
+            if (REMOTE_KEYS[index].modifiers & MOD_SHIFT)
+              Keyboard.press(KEY_LEFT_SHIFT);
+            if (REMOTE_KEYS[index].modifiers & MOD_ALT)
+              Keyboard.press(KEY_LEFT_ALT);
+            if (REMOTE_KEYS[index].modifiers & MOD_ALTGR)
+              Keyboard.press(KEY_RIGHT_ALT);
+
             Keyboard.press(REMOTE_KEYS[index].key);
             pressed_time = millis();
             lastbutton = data;
