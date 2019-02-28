@@ -83,8 +83,8 @@ sed -i 's/\(IRMP_EXT_LOGGING\s*\) 0/\1 1/' irmpconfig.h
 # Teensy-only API). So just hard-disable it completely.
 #
 
-sed -i 's/ARDUINO/xARDUINOx/g' irmp.c
-
+#sed -i 's/ARDUINO/xARDUINOx/g' irmp.c
+patch -p1 -i ../../../irmp-add-arduino-ext-logging.patch
 
 # Finally copy our new IRMP version over to the second source directory
 popd >/dev/null

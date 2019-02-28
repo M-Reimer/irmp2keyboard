@@ -1,0 +1,31 @@
+diff --git a/irmp.c b/irmp.c
+index 841a418..b069623 100644
+--- a/irmp.c
++++ b/irmp.c
+@@ -777,7 +777,7 @@ irmp_protocol_names[IRMP_N_PROTOCOLS + 1] PROGMEM =
+ #  include "stm32f4xx_usart.h"
+ #elif defined(ARM_STM32F10X)
+ #  define  STM32_UART_COM     USART3                                    // UART3 on PB10
+-#elif defined(ARDUINO)                                                  // Arduino Serial implementation
++#elif defined(ARDUINO) && IRMP_EXT_LOGGING == 0                         // Arduino Serial implementation
+ #  if defined(USB_SERIAL)
+ #    include "usb_serial.h"
+ #  else
+@@ -918,7 +918,7 @@ irmp_uart_init (void)
+     // UART enable
+     USART_Cmd(STM32_UART_COM, ENABLE);
+ 
+-#elif defined(ARDUINO)
++#elif defined(ARDUINO) && IRMP_EXT_LOGGING == 0
+     // we use the Arduino Serial Imlementation
+     // you have to call Serial.begin(SER_BAUD); in Arduino setup() function
+ 
+@@ -983,7 +983,7 @@ irmp_uart_putc (unsigned char ch)
+         USART_SendData(STM32_UART_COM, '\r');
+     }
+ 
+-#elif defined(ARDUINO)
++#elif defined(ARDUINO) && IRMP_EXT_LOGGING == 0
+     // we use the Arduino Serial Imlementation
+     usb_serial_putchar(ch);
+ 

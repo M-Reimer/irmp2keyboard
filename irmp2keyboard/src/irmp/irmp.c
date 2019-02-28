@@ -777,11 +777,11 @@ irmp_protocol_names[IRMP_N_PROTOCOLS + 1] PROGMEM =
 #  include "stm32f4xx_usart.h"
 #elif defined(ARM_STM32F10X)
 #  define  STM32_UART_COM     USART3                                    // UART3 on PB10
-#elif defined(xARDUINOx)                                                  // Arduino Serial implementation
+#elif defined(ARDUINO) && IRMP_EXT_LOGGING == 0                         // Arduino Serial implementation
 #  if defined(USB_SERIAL)
 #    include "usb_serial.h"
 #  else
-#    error USB_SERIAL not defined in xARDUINOx Environment
+#    error USB_SERIAL not defined in ARDUINO Environment
 #  endif
 #elif defined(_CHIBIOS_HAL_)                                            // ChibiOS HAL
 #  if IRMP_EXT_LOGGING == 1
@@ -918,7 +918,7 @@ irmp_uart_init (void)
     // UART enable
     USART_Cmd(STM32_UART_COM, ENABLE);
 
-#elif defined(xARDUINOx)
+#elif defined(ARDUINO) && IRMP_EXT_LOGGING == 0
     // we use the Arduino Serial Imlementation
     // you have to call Serial.begin(SER_BAUD); in Arduino setup() function
 
@@ -983,7 +983,7 @@ irmp_uart_putc (unsigned char ch)
         USART_SendData(STM32_UART_COM, '\r');
     }
 
-#elif defined(xARDUINOx)
+#elif defined(ARDUINO) && IRMP_EXT_LOGGING == 0
     // we use the Arduino Serial Imlementation
     usb_serial_putchar(ch);
 
