@@ -13,6 +13,7 @@ Top features:
 - The only tool, you need to setup and configure your IRMP2Keyboard receiver, is the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 - Both, PS2 and USB keyboards, can be "emulated"
 - Trigger PC boot via remote control if your mainboard supports boot on PS2 keyboard keypress
+- Full support for the FDC-3402 infrared keyboard
 
 USB wiring
 ----------
