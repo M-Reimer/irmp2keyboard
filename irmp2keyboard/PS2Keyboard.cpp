@@ -135,16 +135,17 @@ int PS2Keyboard::read(unsigned char * value) {
 
   unsigned char parity = 1;
 
-/*
   //wait for data line to go low
+  unsigned long start = millis();
   while (digitalRead(_ps2data) == HIGH) {
-
+    // If something went wrong (stuck?)
+    if (millis() - start > 500)
+      return -1;
   }
   //wait for clock line to go high
   while (digitalRead(_ps2clk) == LOW) {
 
   }
-*/
 
   delayMicroseconds(CLKHALF);
   golo(_ps2clk);
@@ -277,7 +278,7 @@ bool PS2Keyboard::poll() {
   }
 
   // Host wants to talk to us (Data is pulled low)
-  unsigned char c;
+  unsigned char c = 0;
   if(digitalRead(_ps2data) == LOW) {
     //Serial.println("Data low");
     read(&c);
