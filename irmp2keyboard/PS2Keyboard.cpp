@@ -210,60 +210,60 @@ void PS2Keyboard::HandleCommand(unsigned char command) {
     Serial.print(command, HEX);
     Serial.println();
   }
- unsigned char val;
- switch (command) {
- case 0xFF: //reset
-   ack();
-   //the while loop lets us wait for the host to be ready
-   while(write(0xAA)!=0);
-   _enabled = true;
-   break;
- case 0xFE: //resend
-   ack();
-   break;
- case 0xF6: //set defaults
-   //enter stream mode
-   ack();
-   break;
- case 0xF5: //disable data reporting
-   //FM
-   _enabled = false;
-   ack();
-   break;
- case 0xF4: //enable data reporting
-   //FM
-   _enabled = true;
-   ack();
-   break;
- case 0xF3: //set typematic rate
-   ack();
-   read(&val); //do nothing with the rate
-   ack();
-   break;
- case 0xF2: //get device id
-   ack();
-   while (write(0xAB)!=0);
-   while (write(0x83)!=0);
-   break;
- case 0xF0: //set scan code set
-   ack();
-   read(&val); //do nothing with the rate
-   ack();
-   break;
- case 0xEE: //echo
-   //ack();
-   write(0xEE);
-   break;
- case 0xED: //set/reset LEDs
-   ack();
-   read(&val); //do nothing with the rate
-   ack();
-   break;
- default:
-   Serial.println("Got unknown request from PC");
-   Serial.print(command, HEX);
-   Serial.println();
- }
+  unsigned char val;
+  switch (command) {
+  case 0xFF: //reset
+    ack();
+    //the while loop lets us wait for the host to be ready
+    while(write(0xAA)!=0);
+    _enabled = true;
+    break;
+  case 0xFE: //resend
+    ack();
+    break;
+  case 0xF6: //set defaults
+    //enter stream mode
+    ack();
+    break;
+  case 0xF5: //disable data reporting
+    //FM
+    _enabled = false;
+    ack();
+    break;
+  case 0xF4: //enable data reporting
+    //FM
+    _enabled = true;
+    ack();
+    break;
+  case 0xF3: //set typematic rate
+    ack();
+    read(&val); //do nothing with the rate
+    ack();
+    break;
+  case 0xF2: //get device id
+    ack();
+    while (write(0xAB)!=0);
+    while (write(0x83)!=0);
+    break;
+  case 0xF0: //set scan code set
+    ack();
+    read(&val); //do nothing with the rate
+    ack();
+    break;
+  case 0xEE: //echo
+    //ack();
+    write(0xEE);
+    break;
+  case 0xED: //set/reset LEDs
+    ack();
+    read(&val); //do nothing with the rate
+    ack();
+    break;
+  default:
+    Serial.println("Got unknown request from PC");
+    Serial.print(command, HEX);
+    Serial.println();
+  }
 }
 
 // Tell host that we finished self test.
