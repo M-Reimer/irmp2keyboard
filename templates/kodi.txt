@@ -1,20 +1,47 @@
 // Configuration template to control Kodi
-// Place into your "config_keybindings.h" and fill the remote control
-// codes into the "empty curly brackets"
+// Place the KeyTable below in your "config_keybindings.h" and fill the remote
+// control codes into the "empty curly brackets"
 // Comment out the lines where you don't want to add codes!
+
+// You may optionally add this XML to your keymaps directory in Kodi
+// I named it "keyboard.xml" but the name shouldn't matter
+// Adds the following changes:
+// - Color button support in teletext view
+// - Power-Button triggers immediate shutdown
+// https://kodi.wiki/view/Keymap
+/*
+
+<?xml version="1.0" encoding="UTF-8"?>
+<keymap>
+  <global>
+    <keyboard>
+      <power>Shutdown()</power>
+    </keyboard>
+  </global>
+  <Teletext>
+    <keyboard>
+      <f1>Red</f1>
+      <f2>Green</f2>
+      <f3>Yellow</f3>
+      <f4>Blue</f4>
+    </keyboard>
+  </Teletext>
+</keymap>
+
+*/
 
 KeyTable REMOTE_KEYS[] = {
   // Number keys
-  {{}, 0x00, KEY_0},
-  {{}, 0x00, KEY_1},
-  {{}, 0x00, KEY_2},
-  {{}, 0x00, KEY_3},
-  {{}, 0x00, KEY_4},
-  {{}, 0x00, KEY_5},
-  {{}, 0x00, KEY_6},
-  {{}, 0x00, KEY_7},
-  {{}, 0x00, KEY_8},
-  {{}, 0x00, KEY_9},
+  {{}, MOD_NONE, KEY_0},
+  {{}, MOD_NONE, KEY_1},
+  {{}, MOD_NONE, KEY_2},
+  {{}, MOD_NONE, KEY_3},
+  {{}, MOD_NONE, KEY_4},
+  {{}, MOD_NONE, KEY_5},
+  {{}, MOD_NONE, KEY_6},
+  {{}, MOD_NONE, KEY_7},
+  {{}, MOD_NONE, KEY_8},
+  {{}, MOD_NONE, KEY_9},
 
   // Arrow keys
   {{}, MOD_NONE, KEY_LEFT},
