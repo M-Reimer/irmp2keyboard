@@ -1,6 +1,8 @@
 IRMP2Keyboard infrared remote to PS2/USB keyboard converter
 ===========================================================
 
+![](https://raw.githubusercontent.com/wiki/M-Reimer/irmp2keyboard/images/ps2-case-closed.jpg)
+
 IRMP2Keyboard is an easy-to-use Arduino firmware which allows you to create a reliable remote control receiver for your PC. It can either interface via PS2 or USB. The PC sees the receiver as regular keyboard. It's your choice which keypresses (or even key combinations) are executed on remote control button presses.
 
 The special advantage of supporting the PS2 protocol is, that (even nowadays) many motherboards offer to boot keyboard keypress. This usually only works if the keyboard is an PS2 keyboard!
@@ -11,11 +13,6 @@ Top features:
 - The only tool, you need to setup and configure your IRMP2Keyboard receiver, is the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 - Both, PS2 and USB keyboards, can be "emulated"
 - Trigger PC boot via remote control if your mainboard supports boot on PS2 keyboard keypress
-
-```
-- WARNING: If the PS2 port is directly connected to the Arduino, then uploading a bad/wrong sketch may damage your mainboard!
-- The same applies if you connect both (PS2 and USB). Especially when doing this between two different PCs. NO WARRANTY at all! You have been warned!
-```
 
 USB wiring
 ----------
@@ -32,7 +29,7 @@ Just wire your TSOP receiver in the following way:
 PS2 wiring
 ----------
 
-PS2 should work on nearly every Arduino, but recommended are Arduino Nano or Arduino Pro Micro.
+PS2 should work on nearly every Arduino as long as it is AVR (Atmel Atmega) based and uses 5V logic voltage, but recommended are Arduino Nano or Arduino Pro Micro.
 
 The TSOP wiring depends on the Arduino, you use:
 
@@ -44,6 +41,13 @@ PS2-Wiring is always:
 
 - Data to D2
 - Clock to D3
+
+```
+- WARNING: If the PS2 port is directly connected to the Arduino, then uploading a bad/wrong sketch may damage your mainboard!
+- The same applies if you connect both (PS2 and USB). Especially when doing this between two different PCs.
+- NO WARRANTY at all!
+- You have been warned!
+```
 
 ![](https://raw.githubusercontent.com/wiki/M-Reimer/irmp2keyboard/images/ps2-case-open.jpg)
 
@@ -75,7 +79,7 @@ Select this line and switch to the Arduino IDE with your "irmp2keyboard" sketch.
   {{0x02,0x7080,0x00c0,0x00}, MOD_NONE, KEY_0},
 ```
 
-The first part is your code. Then the modifiers area follows. The last field is the actual key that has to be pressed.
+The first part is your code. Then the modifiers area follows. The last field is the actual key that has to be pressed. Allowed keys can be found in the PS2Keyboard.h tab in your Arduino IDE.
 
 Example with modifiers (Ctrl + Alt + Entf)
 
