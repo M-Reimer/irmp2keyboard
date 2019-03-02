@@ -5,7 +5,7 @@ IRMP2Keyboard infrared remote to PS2/USB keyboard converter
 
 IRMP2Keyboard is an easy-to-use Arduino firmware which allows you to create a reliable remote control receiver for your PC. It can either interface via PS2 or USB. The PC sees the receiver as regular keyboard. It's your choice which keypresses (or even key combinations) are executed on remote control button presses.
 
-The special advantage of supporting the PS2 protocol is, that (even nowadays) many motherboards offer to boot keyboard keypress. This usually only works if the keyboard is an PS2 keyboard!
+The special advantage of supporting the PS2 protocol is, that (even nowadays) many motherboards offer to boot via keyboard keypress. This usually only works if the keyboard is a PS2 keyboard!
 
 Top features:
 
