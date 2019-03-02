@@ -42,7 +42,7 @@ PS2-Wiring is always:
 - Data to D2
 - Clock to D3
 
-```
+```diff
 - WARNING: If the PS2 port is directly connected to the Arduino, then uploading a bad/wrong sketch may damage your mainboard!
 - The same applies if you connect both (PS2 and USB). Especially when doing this between two different PCs.
 - NO WARRANTY at all!
