@@ -27,6 +27,9 @@
 #include "Arduino.h"
 #include "PS2Keyboard.h"
 
+// Switch to true to get some debug stuff on serial monitor
+#define DEBUG false
+
 //since for the device side we are going to be in charge of the clock,
 //the two defines below are how long each _phase_ of the clock cycle is
 #define CLKFULL 40
@@ -202,9 +205,11 @@ void PS2Keyboard::ack() {
 // Handles commands sent from the host to us.
 // Most of them are just ignored and blindli "acked".
 void PS2Keyboard::HandleCommand(unsigned char command) {
+  if (DEBUG) {
     Serial.println("Got request from PC");
-  Serial.print(command, HEX);
-  Serial.println();
+    Serial.print(command, HEX);
+    Serial.println();
+  }
  unsigned char val;
  switch (command) {
  case 0xFF: //reset
@@ -309,7 +314,7 @@ size_t PS2Keyboard::press(KeyboardKeycode key) {
   while (true) {
     if (poll())
       continue;
-    Serial.println("P");
+
     if (k.bytes[1] != 0x00) {
       if (write(k.bytes[1]))
         continue;
