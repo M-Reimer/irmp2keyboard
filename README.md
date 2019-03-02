@@ -64,9 +64,9 @@ To make the receiver control the media software of your choice, you have to bind
 
 You can find templates in the [templates directory](templates) and some already "decoded" remote controls in the [remotes directory](remotes).
 
-Most probably you have to "decode" the remote control, you want to use, first. To do this, upload the irmpdump sketch first.
+Most probably you have to "decode" the remote control, you want to use, first. To do this, upload the **irmpdump** sketch first.
 
-Now open the "Serial Monitor" and have the "irmp2keyboard" sketch ready for editing in a second Arduino IDE window.
+Now open the "Serial Monitor" and have the **irmp2keyboard** sketch ready for editing in a second Arduino IDE window.
 
 With every keypress on your remote, you should see a code that looks similar to this:
 
@@ -74,7 +74,7 @@ With every keypress on your remote, you should see a code that looks similar to 
 0x02,0x7080,0x00c0,0x00
 ```
 
-Select this line and switch to the Arduino IDE with your "irmp2keyboard" sketch. Enable the tab with "config_keybindings.h" in it. Here, you now have to create a line similar to this:
+Select this line and switch to the Arduino IDE with your "irmp2keyboard" sketch. Enable the tab with "config_keybindings.h" in it. Here, you now have to create  lines similar to this (and remove lines that aren't needed for your configuration):
 
 ```
   {{0x02,0x7080,0x00c0,0x00}, MOD_NONE, KEY_0},
