@@ -61,7 +61,7 @@ At first, search for the following libraries in the Arduino Library Manager and 
 
 To make the receiver control the media software of your choice, you have to bind remote control buttons to keyboard keys. This is done in the config_keybindings.h file. This file already contains the bindings, that I use, as a reference.
 
-You can find templates in the templates directory and some already "decoded" remote controls in the remotes directory.
+You can find templates in the [templates directory](templates) and some already "decoded" remote controls in the [remotes directory](remotes).
 
 Most probably you have to "decode" the remote control, you want to use, first. To do this, upload the irmpdump sketch first.
 
