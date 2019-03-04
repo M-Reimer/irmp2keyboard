@@ -27,10 +27,13 @@ KeyTable REMOTE_KEYS[] = {
   {{}, MOD_NONE, KEY_ENTER},
   // Back or Exit
   {{}, MOD_NONE, KEY_BACKSPACE},
-  // Info-Button
-  {{}, MOD_NONE, KEY_END},
   // Menu
   {{}, MOD_NONE, KEY_TAB},
+
+  // Info-Button
+  {{}, MOD_NONE, KEY_END},
+  // Audio-Button
+  {{}, MOD_NONE, KEY_RIGHT_GUI},
 
   // Pause
   {{}, MOD_NONE, KEY_F9},
@@ -42,6 +45,11 @@ KeyTable REMOTE_KEYS[] = {
   // Mute
   {{}, MOD_NONE, KEY_F10},
 
+  // Channel up
+  {{}, MOD_NONE, KEY_PAGE_UP},
+  // Channel down
+  {{}, MOD_NONE, KEY_PAGE_DOWN},
+
   // Red
   {{}, MOD_NONE, KEY_F1},
   // Green
@@ -50,4 +58,28 @@ KeyTable REMOTE_KEYS[] = {
   {{}, MOD_NONE, KEY_F3},
   // Blue
   {{}, MOD_NONE, KEY_F4},
+
+  // Power on (Sends "KEY_POWER" via PS2 to trigger boot)
+  {{}, MOD_NONE, KEY_POWER},
+  // Power off (Sends "KEY_PAUSE" to ask VDR to shutdown)
+  {{}, MOD_NONE, KEY_PAUSE},
+
+  // User1
+  {{}, MOD_NONE, KEY_F5},
+  // User2
+  {{}, MOD_NONE, KEY_F6},
+  // User3
+  {{}, MOD_NONE, KEY_F7},
+  // User4
+  {{}, MOD_NONE, KEY_F8},
+  // User5
+  {{}, MOD_NONE, KEY_PRINT},
+  // User6
+  {{}, MOD_NONE, KEY_SCROLL_LOCK},
+  // User7
+  {{}, MOD_NONE, KEY_INSERT},
+  // User8
+  {{}, MOD_NONE, KEYPAD_DIVIDE},
+  // User9
+  {{}, MOD_NONE, KEYPAD_MULTIPLY},
 };
