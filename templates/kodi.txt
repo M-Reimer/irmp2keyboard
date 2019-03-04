@@ -52,7 +52,7 @@ KeyTable REMOTE_KEYS[] = {
   {{}, MOD_NONE, KEY_ENTER},
   // Back or Exit
   {{}, MOD_NONE, KEY_BACKSPACE},
-  // Info-Key
+  // Info-Button
   {{}, MOD_NONE, KEY_I},
   // Menu
   {{}, MOD_NONE, KEY_M},
