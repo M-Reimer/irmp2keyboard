@@ -139,6 +139,13 @@ enum KeyboardKeycode : uint16_t {
   KEY_RIGHT_WINDOWS = 0xE027, // Alias
 
   KEY_NON_US = 0x0061, // Not available on US keyboards. Combined "<", ">" and "|" on DE keyboard.
+
+  KEY_SCROLL_LOCK = 0x007E,
+
+  // Special keys (left byte 0xFF)
+  KEY_PRINT = 0xFF01,
+  KEY_PRINTSCREEN = 0xFF01, // Alias
+  KEY_PAUSE = 0xFF02,
 };
 
 union KeycodeUnion {

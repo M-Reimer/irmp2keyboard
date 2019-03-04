@@ -315,13 +315,43 @@ size_t PS2Keyboard::press(KeyboardKeycode key) {
     if (poll())
       continue;
 
-    if (k.bytes[1] != 0x00) {
-      if (write(k.bytes[1]))
+    if (k.bytes[1] != 0xFF) { // All "regular" scancodes
+      if (k.bytes[1] != 0x00) {
+        if (write(k.bytes[1]))
+          continue;
+      }
+
+      if (write(k.bytes[0]))
         continue;
     }
-
-    if (write(k.bytes[0]))
-      continue;
+    else if (k.bytes[0] == 0x01) { // Print Screen
+      if (write(0xE0))
+        continue;
+      if (write(0x12))
+        continue;
+      if (write(0xE0))
+        continue;
+      if (write(0x7C))
+        continue;
+    }
+    else if (k.bytes[0] == 0x02) { // Pause
+      if (write(0xE1))
+        continue;
+      if (write(0x14))
+        continue;
+      if (write(0x77))
+        continue;
+      if (write(0xE1))
+        continue;
+      if (write(0xF0))
+        continue;
+      if (write(0x14))
+        continue;
+      if (write(0xF0))
+        continue;
+      if (write(0x77))
+        continue;
+    }
 
     break;
   }
@@ -349,17 +379,33 @@ size_t PS2Keyboard::release(KeyboardKeycode key) {
   while (true) {
     if (poll())
       continue;
-  
-    if (k.bytes[1] != 0x00) {
-      if (write(k.bytes[1]))
+
+    if (k.bytes[1] != 0xFF) { // All "regular" scancodes
+      if (k.bytes[1] != 0x00) {
+        if (write(k.bytes[1]))
+          continue;
+      }
+
+      if (write(0xF0))
+        continue;
+
+      if (write(k.bytes[0]))
         continue;
     }
-
-    if (write(0xF0))
-      continue;
-
-    if (write(k.bytes[0]))
-      continue;
+    else if (k.bytes[0] == 0x01) { // Print Screen
+      if (write(0xE0))
+        continue;
+      if (write(0xF0))
+        continue;
+      if (write(0x7C))
+        continue;
+      if (write(0xE0))
+        continue;
+      if (write(0xF0))
+        continue;
+      if (write(0x12))
+        continue;
+    }
 
     break;
   }
