@@ -1,0 +1,53 @@
+// Configuration template to control VDR if configured with "yaVDR standard"
+// https://github.com/yavdr/yavdr-utils/blob/master/templates/var/lib/vdr/remote.conf/50_keys
+// https://www.yavdr.org/documentation/0.6/de/yavdr-keyboard_small.png
+// Place the KeyTable below in your "config_keybindings.h" and fill the remote
+// control codes into the "empty curly brackets"
+// Comment out the lines where you don't want to add codes!
+
+KeyTable REMOTE_KEYS[] = {
+  // Number keys
+  {{}, MOD_NONE, KEY_0},
+  {{}, MOD_NONE, KEY_1},
+  {{}, MOD_NONE, KEY_2},
+  {{}, MOD_NONE, KEY_3},
+  {{}, MOD_NONE, KEY_4},
+  {{}, MOD_NONE, KEY_5},
+  {{}, MOD_NONE, KEY_6},
+  {{}, MOD_NONE, KEY_7},
+  {{}, MOD_NONE, KEY_8},
+  {{}, MOD_NONE, KEY_9},
+
+  // Arrow keys
+  {{}, MOD_NONE, KEY_LEFT},
+  {{}, MOD_NONE, KEY_RIGHT},
+  {{}, MOD_NONE, KEY_UP},
+  {{}, MOD_NONE, KEY_DOWN},
+  // OK-Button
+  {{}, MOD_NONE, KEY_ENTER},
+  // Back or Exit
+  {{}, MOD_NONE, KEY_BACKSPACE},
+  // Info-Button
+  {{}, MOD_NONE, KEY_END},
+  // Menu
+  {{}, MOD_NONE, KEY_TAB},
+
+  // Pause
+  {{}, MOD_NONE, KEY_F9},
+
+  // Volume up
+  {{}, MOD_NONE, KEYPAD_ADD},
+  // Volume down
+  {{}, MOD_NONE, KEYPAD_SUBTRACT},
+  // Mute
+  {{}, MOD_NONE, KEY_F10},
+
+  // Red
+  {{}, MOD_NONE, KEY_F1},
+  // Green
+  {{}, MOD_NONE, KEY_F2},
+  // Yellow
+  {{}, MOD_NONE, KEY_F3},
+  // Blue
+  {{}, MOD_NONE, KEY_F4},
+};
