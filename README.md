@@ -13,6 +13,7 @@ Top features:
 - The only tool, you need to setup and configure your IRMP2Keyboard receiver, is the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 - Both, PS2 and USB keyboards, can be "emulated"
 - Trigger PC boot via remote control if your mainboard supports boot on PS2 keyboard keypress
+- In "USB mode" it is possible to configure a "wakeup code" which will, when received, pull down pin A3 for some milliseconds. You can use this to trigger a Raspberry Pi to reboot. It may also be used to control an optocoupler to control the power button on PC mainboards.
 - Full support for the FDC-3402 infrared keyboard
 
 USB wiring
@@ -103,3 +104,24 @@ As soon as you have your combinations defined, switch over to "config.h" and dec
 ```
 
 Now it's time to upload the irmp2keyboard sketch to your arduino and try out your new remote control receiver!
+
+Raspberry Pi boot from shutdown
+-------------------------------
+
+![](https://raw.githubusercontent.com/wiki/M-Reimer/irmp2keyboard/images/raspberry.jpg)
+
+It is possible to recover a Raspberry Pi from "halt state" by pulling pin 5 to GND for a short period of time.
+
+My project supports this feature in USB mode. So all you have to do is to comment "PS2_KEYBOARD", uncomment "WAKEUP_CODE" and set the code you want to have for triggering the wakeup.
+
+Then connect the following pins:
+
+| Arduino pin | Raspberry pin |
+|-------------|---------------|
+| RAW         | 2             |
+| GND         | 6             |
+| A3          | 5             |
+
+After completely powering down, the Arduino keeps powered using our additional GND and 5V lines we connected. If you press the remote control button you configured with WAKEUP_CODE, pin 5 on the Raspberry is pulled low via Arduino pin A3. This allows to power on your Raspberry without power cycling.
+
+If you configure standard Kodi shortcuts, then this whole thing works out of the box on a standard [LibreELEC](https://libreelec.tv/) setup!
