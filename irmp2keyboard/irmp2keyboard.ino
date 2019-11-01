@@ -98,6 +98,22 @@ void loop() {
 #endif
 
   if (irmp_get_data(&data)) {
+
+     // WAKEUP_CODE feature.
+#if defined(__AVR_ATmega32U4__) && defined(WAKEUP_CODE)
+    if (USBDevice.isSuspended()) {
+      IRMP_DATA wakeup_button = WAKEUP_CODE;
+      if (memcmp(&data, &wakeup_button, sizeof(IRMP_DATA) - 1) == 0) {
+        pinMode(A3, OUTPUT);
+        delay(100);
+        pinMode(A3, INPUT);
+      }
+      // Don't continue if USB is suspended!
+      // Whole microcontroller will hang up otherwise!
+      return;
+    }
+#endif
+
     // Once the first packet with FDC protocol comes in, switch mode
     if (data.protocol == IRMP_FDC_PROTOCOL)
       fdc_mode = true;
