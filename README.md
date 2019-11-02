@@ -112,7 +112,7 @@ Raspberry Pi boot from shutdown
 
 It is possible to recover a Raspberry Pi from "halt state" by pulling pin 5 to GND for a short period of time.
 
-My project supports this feature in USB mode. So all you have to do is to comment "PS2_KEYBOARD", uncomment "WAKEUP_CODE" and set the code you want to have for triggering the wakeup.
+My project supports this feature in USB mode. The recommended board is the Arduino Pro Micro in the 5V version but with the jumper SJ1 not closed! So all you have to do is to comment "PS2_KEYBOARD", uncomment "WAKEUP_CODE" and set the code you want to have for triggering the wakeup.
 
 Then connect the following pins:
 
@@ -121,6 +121,8 @@ Then connect the following pins:
 | RAW         | 2             |
 | GND         | 6             |
 | A3          | 5             |
+
+Please check that your SJ1 jumper on the Arduino Pro Micro is not closed! This is the jumper on the back side of the board which is meant to be closed for the 5V version. The chinese 5V versions usually have this jumper open but the original board from Sparkfun may have the bridge soldered closed. If so, remove the solder or you'll "backpower" the USB ports in "halt state" which may damage some components on the Pi.
 
 After completely powering down, the Arduino keeps powered using our additional GND and 5V lines we connected. If you press the remote control button you configured with WAKEUP_CODE, pin 5 on the Raspberry is pulled low via Arduino pin A3. This allows to power on your Raspberry without power cycling.
 
