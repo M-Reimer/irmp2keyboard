@@ -13,5 +13,5 @@
 // Wakeup feature. Only supported on the ATMega32u4 (Pro Micro)
 // If you configure an IR keycode here and this keycode is
 // detected *and* the connected USB host is shut down, then
-// pin A3 on the Arduino is pulled low for a few seconds.
+// pin A3 on the Arduino is pulled low for a few milliseconds.
 //#define WAKEUP_CODE {0x07,0x000a,0x000c,0x00}
