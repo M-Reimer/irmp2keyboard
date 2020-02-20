@@ -27,6 +27,7 @@
 //
 // Dependencies: TimerOne
 //               HID-Project (for USB support)
+//               USBStatus (if you uncomment "WAKEUP_CODE" in config.h)
 //
 // Have a look at "config.h" and "config_keybindings.h" for more info!
 //
@@ -53,6 +54,11 @@
 // For the USB keyboard, the "HID-Project" library will provide everything we need.
 #else
   #include <HID-Project.h>
+#endif
+
+// If we build with wakeup feature enabled, then we need the USBStatus library
+#ifdef WAKEUP_CODE
+  #include <USBStatus.h>
 #endif
 
 // The struct used in "config_keybindings.h"
@@ -101,7 +107,7 @@ void loop() {
 
      // WAKEUP_CODE feature.
 #if defined(__AVR_ATmega32U4__) && defined(WAKEUP_CODE)
-    if (USBDevice.isSuspended()) {
+    if (USBStatus.isShutDown()) {
       IRMP_DATA wakeup_button = WAKEUP_CODE;
       if (memcmp(&data, &wakeup_button, sizeof(IRMP_DATA) - 1) == 0) {
         pinMode(A3, OUTPUT);

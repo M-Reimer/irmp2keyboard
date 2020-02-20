@@ -60,6 +60,7 @@ At first, search for the following libraries in the Arduino Library Manager and 
 
 - TimerOne (always required)
 - HID-Project (Required only if you build for USB support)
+- USBStatus (only required if you enable the wakeup feature)
 
 To make the receiver control the media software of your choice, you have to bind remote control buttons to keyboard keys. This is done in the config_keybindings.h file. This file already contains the bindings, that I use, as a reference.
 
@@ -113,6 +114,8 @@ Raspberry Pi boot from shutdown
 It is possible to recover a Raspberry Pi from "halt state" by pulling pin 5 to GND for a short period of time.
 
 My project supports this feature in USB mode. The recommended board is the Arduino Pro Micro in the 5V version but with the jumper SJ1 not closed! So all you have to do is to comment "PS2_KEYBOARD", uncomment "WAKEUP_CODE" and set the code you want to have for triggering the wakeup.
+
+Please note that enabling "WAKEUP_CODE" adds the "USBStatus" library as additional dependency. You find it in the Arduino library manager.
 
 Then connect the following pins:
 
