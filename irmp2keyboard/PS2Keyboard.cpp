@@ -360,6 +360,10 @@ size_t PS2Keyboard::press(KeyboardKeycode key) {
   return 1;
 }
 size_t PS2Keyboard::release(KeyboardKeycode key) {
+  // KEY_NONE is a placeholder for "no key"
+  if (key == KEY_NONE)
+    return 0;
+
   // Is the key pressed?
   int pos = -1;
   for (int index = 0; index < MAX_KEYS; index++) {
@@ -370,7 +374,7 @@ size_t PS2Keyboard::release(KeyboardKeycode key) {
   }
   if (pos == -1)
     return 0;
-  
+
   // Split the two bytes
   KeycodeUnion k;
   k.key = key;
