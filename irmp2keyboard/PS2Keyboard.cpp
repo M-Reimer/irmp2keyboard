@@ -385,15 +385,27 @@ size_t PS2Keyboard::release(KeyboardKeycode key) {
       continue;
 
     if (k.bytes[1] != 0xFF) { // All "regular" scancodes
+      int fehlercode = 0;
+      // Hier irgendwo liegt unser Problem. "write" meldet Fehler und via "continue" folgt ein Retry (standardkonform bei Übertragungsfehlern)
       if (k.bytes[1] != 0x00) {
-        if (write(k.bytes[1]))
+        Serial.println("Release eines zwei-byte Codes!");
+        fehlercode = write(k.bytes[1]);
+        Serial.print("Status schreiben erstes Byte: ");
+        Serial.println(fehlercode);
+        if (fehlercode)
           continue;
       }
 
-      if (write(0xF0))
+      fehlercode = write(0xF0);
+      Serial.print("Status schreiben Release-Byte (0xF0): ");
+      Serial.println(fehlercode);
+      if (fehlercode)
         continue;
 
-      if (write(k.bytes[0]))
+      fehlercode = write(k.bytes[0]);
+      Serial.print("Status schreiben zweites Byte: ");
+      Serial.println(fehlercode);
+      if (fehlercode)
         continue;
     }
     else if (k.bytes[0] == 0x01) { // Print Screen
