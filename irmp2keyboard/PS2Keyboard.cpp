@@ -1,6 +1,6 @@
 /*
     IRMP2Keyboard infrared remote to PS2/USB keyboard converter
-    Copyright (C) 2019 Manuel Reimer <manuel.reimer@gmx.de>
+    Copyright (C) 2020 Manuel Reimer <manuel.reimer@gmx.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,6 +36,9 @@
 // we make changes in the middle of a phase, this how long from the
 // start of phase to the when we drive the data line
 #define CLKHALF 20
+// The keyboard controller needs some time to accept the sent byte.
+// The following value was measured from a "real" no-name PS2 keyboard.
+#define BYTE_SPACING 2000
 
 /*
  * the clock and data pins can be wired directly to the clk and data pins
@@ -126,7 +129,7 @@ int PS2Keyboard::write(unsigned char data) {
   gohi(_ps2clk);
   delayMicroseconds(CLKHALF);
 
-  delayMicroseconds(50);
+  delayMicroseconds(BYTE_SPACING);
   return 0;
 }
 
