@@ -32,13 +32,13 @@
 
 //since for the device side we are going to be in charge of the clock,
 //the two defines below are how long each _phase_ of the clock cycle is
-#define CLKFULL 40
+#define CLKFULL 40 //µs
 // we make changes in the middle of a phase, this how long from the
 // start of phase to the when we drive the data line
-#define CLKHALF 20
+#define CLKHALF 20 //µs
 // The keyboard controller needs some time to accept the sent byte.
 // The following value was measured from a "real" no-name PS2 keyboard.
-#define BYTE_SPACING 2000
+#define BYTE_SPACING 0 //ms
 
 /*
  * the clock and data pins can be wired directly to the clk and data pins
@@ -129,7 +129,19 @@ int PS2Keyboard::write(unsigned char data) {
   gohi(_ps2clk);
   delayMicroseconds(CLKHALF);
 
-  delayMicroseconds(BYTE_SPACING);
+  // At this point we are disengaged from the the clock line. The PS2
+  // controller should pull the line low for a few microseconds to acknowledge
+  // our transfer. We wait for that or timeout after BYTE_SPACING ms.
+  unsigned long start = millis();
+  while (digitalRead(_ps2clk) == HIGH) {
+    if (millis() - start >= BYTE_SPACING)
+      return 0;
+  }
+  while (digitalRead(_ps2clk) == LOW) {
+    if (millis() - start >= BYTE_SPACING)
+      return 0;
+  }
+
   return 0;
 }
 
