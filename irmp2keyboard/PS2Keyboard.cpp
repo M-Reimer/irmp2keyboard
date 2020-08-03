@@ -38,7 +38,7 @@
 #define CLKHALF 20 //µs
 // The keyboard controller needs some time to accept the sent byte.
 // The following value was measured from a "real" no-name PS2 keyboard.
-#define BYTE_SPACING 0 //ms
+#define BYTE_SPACING 2 //ms
 
 /*
  * the clock and data pins can be wired directly to the clk and data pins
